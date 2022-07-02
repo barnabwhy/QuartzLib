@@ -15,15 +15,15 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <junit.version>4.13.1</junit.version>
-        <revision>0.0.5-SNAPSHOT</revision>
+        <revision>0.1.0</revision>
     </properties>
 
     <build>
         <sourceDirectory>../src/main/java</sourceDirectory>
-        <testSourceDirectory>../src/test/java</testSourceDirectory>
-        <testResources>
-            <testResource><directory>../src/test/resources</directory></testResource>
-        </testResources>
+<!--        <testSourceDirectory>../src/test/java</testSourceDirectory>-->
+<!--        <testResources>-->
+<!--            <testResource><directory>../src/test/resources</directory></testResource>-->
+<!--        </testResources>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

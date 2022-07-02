@@ -307,13 +307,14 @@ public final class Reflection {
      * @throws InvocationTargetException if an exception is thrown by the called method.
      */
     public static Object call(Class<?> klass, Object instance, String name, Object... parameters)
-            throws NoSuchMethodException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
+            throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
+            InvocationTargetException {
         Method method;
         final Class<?>[] types = getTypes(parameters);
 
         try {
             method = klass.getMethod(name, types);
-        } catch (NoSuchMethodException ex) {
+        } catch (NoSuchMethodException | SecurityException ex) {
             method = klass.getDeclaredMethod(name, types);
         }
 
@@ -333,7 +334,7 @@ public final class Reflection {
         try {
             try {
                 klass.getMethod(name, parameterTypes);
-            } catch (NoSuchMethodException ex) {
+            } catch (NoSuchMethodException | SecurityException ex) {
                 klass.getDeclaredMethod(name, parameterTypes);
             }
         } catch (NoSuchMethodException | SecurityException ex) {

@@ -301,14 +301,19 @@ public abstract class NBT {
         try {
             Object tagCompound;
             try {
-                //1.18
-                tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "t");
+                //1.19
+                tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "v");
             } catch (Exception e) {
-                //1.17
                 try {
-                    tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "getTag");
+                    //1.18
+                    tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "t");
                 } catch (Exception e2) {
-                    tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "a");
+                    //1.17
+                    try {
+                        tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "getTag");
+                    } catch (Exception e3) {
+                        tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "a");
+                    }
                 }
             }
 
