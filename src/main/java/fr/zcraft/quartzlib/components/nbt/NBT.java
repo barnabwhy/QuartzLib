@@ -113,11 +113,7 @@ public abstract class NBT {
 
         for (Map.Entry<Enchantment, Integer> enchantment : enchants.entrySet()) {
             final Map<String, Object> enchantmentData = new HashMap<>();
-
-
             enchantmentData.put("key", enchantment.getKey());
-
-
             enchantmentData.put("lvl", enchantment.getValue());
             enchantList.add(enchantmentData);
         }
@@ -218,7 +214,7 @@ public abstract class NBT {
 
             if (tag != null) {
                 final ItemMeta craftItemMeta = (ItemMeta) Reflection
-                        .call(craftItemStack.getClass(), null, "getItemMeta", new Object[] {mcItemStack});
+                        .call(craftItemStack.getClass(), null, "getItemMeta", new Object[]{mcItemStack});
 
                 // There's an "applyToItem" method in CraftItemMeta but is doesn't handle well new NBT tags.
                 // We try to re-create a whole new instance from the same CraftItemMeta base class instead,
@@ -237,7 +233,7 @@ public abstract class NBT {
 
             return craftItemStack;
         } catch (InvocationTargetException | NoSuchMethodException | InstantiationException
-                | IllegalAccessException | NMSException e) {
+                 | IllegalAccessException | NMSException e) {
             throw new NMSException("Cannot set item stack tags", e);
         }
     }
@@ -292,7 +288,6 @@ public abstract class NBT {
      * @throws NMSException If something goes wrong while extracting the tag.
      */
     private static Object getMcNBTCompound(ItemStack item) throws NMSException {
-
         Object mcItemStack = ItemUtils.getNMSItemStack(item);
         if (mcItemStack == null) {
             return null;
@@ -301,18 +296,23 @@ public abstract class NBT {
         try {
             Object tagCompound;
             try {
-                //1.19
-                tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "v");
+                //1.20
+                tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "w");
             } catch (Exception e) {
                 try {
-                    //1.18
-                    tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "t");
+                    //1.19
+                    tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "v");
                 } catch (Exception e2) {
-                    //1.17
                     try {
-                        tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "getTag");
+                        //1.18
+                        tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "t");
                     } catch (Exception e3) {
-                        tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "a");
+                        //1.17
+                        try {
+                            tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "getTag");
+                        } catch (Exception e4) {
+                            tagCompound = Reflection.call(mcItemStack.getClass(), mcItemStack, "a");
+                        }
                     }
                 }
             }
@@ -322,7 +322,6 @@ public abstract class NBT {
                 Reflection.call(MC_ITEM_STACK, mcItemStack, "setTag", tagCompound);
             }
             return tagCompound;
-
         } catch (Exception exc) {
             //Older method
             try {
