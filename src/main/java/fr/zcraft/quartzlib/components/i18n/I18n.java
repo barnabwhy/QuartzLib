@@ -36,7 +36,6 @@ import fr.zcraft.quartzlib.core.QuartzComponent;
 import fr.zcraft.quartzlib.core.QuartzLib;
 import fr.zcraft.quartzlib.core.QuartzPlugin;
 import fr.zcraft.quartzlib.tools.PluginLogger;
-import fr.zcraft.quartzlib.tools.reflection.Reflection;
 import java.io.File;
 import java.io.IOException;
 import java.text.MessageFormat;
@@ -52,8 +51,8 @@ import java.util.TreeSet;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.Validate;
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.Validate;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
@@ -228,18 +227,7 @@ public class I18n extends QuartzComponent {
             return null;
         }
 
-        try {
-            final Object playerHandle = Reflection.call(player, "getHandle");
-            final String localeName = (String) Reflection.getFieldValue(playerHandle, "locale");
-            return localeFromString(localeName);
-        } catch (Exception e) {
-            if (!playerLocaleWarning) {
-                PluginLogger.warning("Could not retrieve locale for player {0}", e, player.getName());
-                playerLocaleWarning = true;
-            }
-
-            return null;
-        }
+        return player.locale();
     }
 
     /**

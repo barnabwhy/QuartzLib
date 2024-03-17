@@ -32,14 +32,8 @@ package fr.zcraft.quartzlib.tools.items;
 
 import fr.zcraft.quartzlib.core.QuartzComponent;
 import fr.zcraft.quartzlib.core.QuartzLib;
-import fr.zcraft.quartzlib.tools.PluginLogger;
-import fr.zcraft.quartzlib.tools.reflection.Reflection;
-import java.lang.reflect.Field;
 import java.util.Map;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
 import org.bukkit.enchantments.Enchantment;
-import org.bukkit.enchantments.EnchantmentTarget;
 import org.bukkit.event.Event;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
@@ -51,8 +45,6 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 /**
  * Utilities creating a fake enchantment to add a glowing effect on any item.
@@ -63,9 +55,6 @@ import org.jetbrains.annotations.Nullable;
  * @author Amaury Carrade
  */
 public class GlowEffect extends QuartzComponent {
-    private static final String ENCHANTMENT_NAME = "____gloweffect____";
-    @Nullable
-    private static Enchantment glowEnchantment = null;
 
     @Override
     protected void onEnable() {
@@ -79,32 +68,7 @@ public class GlowEffect extends QuartzComponent {
      * @return an instance of the fake enchantment.
      */
     private static Enchantment getGlow() {
-        if (glowEnchantment != null) {
-            return glowEnchantment;
-        }
-
-        glowEnchantment = Enchantment.getByKey(getEnchantmentKey());
-
-        if (glowEnchantment != null) {
-            return glowEnchantment;
-        }
-
-        try {
-            // We change this to force Bukkit to accept a new enchantment.
-            // Thanks to Cybermaxke on BukkitDev.
-            Reflection.setFieldValue(Enchantment.class, null, "acceptingNew", true);
-        } catch (Exception e) {
-            PluginLogger.error("Unable to re-enable enchantments registrations", e);
-        }
-
-        glowEnchantment = new GlowEffectEnchantment();
-        Enchantment.registerEnchantment(glowEnchantment);
-
-        return glowEnchantment;
-    }
-
-    private static NamespacedKey getEnchantmentKey() {
-        return new NamespacedKey(QuartzLib.getPlugin(), ENCHANTMENT_NAME);
+        return Enchantment.DURABILITY;
     }
 
     /**
@@ -120,7 +84,10 @@ public class GlowEffect extends QuartzComponent {
         final Enchantment glow = getGlow();
 
         if (glow != null) {
-            item.addEnchantment(glow, 1);
+            item.editMeta(itemMeta -> {
+                itemMeta.addEnchant(glow, 1, true);
+                itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+            });
         }
     }
 
@@ -209,52 +176,5 @@ public class GlowEffect extends QuartzComponent {
                 }
             }
         }
-    }
-
-    private static class GlowEffectEnchantment extends Enchantment {
-        protected GlowEffectEnchantment() {
-            super(getEnchantmentKey());
-        }
-
-        @Override
-        public boolean canEnchantItem(@NotNull ItemStack item) {
-            return true;
-        }
-
-        @Override
-        public boolean conflictsWith(@NotNull Enchantment other) {
-            return false;
-        }
-
-        @Override
-        public @NotNull EnchantmentTarget getItemTarget() {
-            return EnchantmentTarget.ALL;
-        }
-
-        @Override
-        public boolean isTreasure() {
-            return false;
-        }
-
-        @Override
-        public boolean isCursed() {
-            return false;
-        }
-
-        @Override
-        public int getMaxLevel() {
-            return 1;
-        }
-
-        @Override
-        public @NotNull String getName() {
-            return ENCHANTMENT_NAME;
-        }
-
-        @Override
-        public int getStartLevel() {
-            return 1;
-        }
-
     }
 }
