@@ -382,7 +382,8 @@ public abstract class NBT {
             case TAG_LIST:
                 return new NBTList(nbtTag);
             default:
-                return type.getData(nbtTag);
+                return nbtTag;
+                //return type.getData(nbtTag);
         }
     }
 

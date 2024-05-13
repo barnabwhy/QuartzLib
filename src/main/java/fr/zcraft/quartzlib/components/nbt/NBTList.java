@@ -99,8 +99,12 @@ public class NBTList implements List<Object> {
                         (List<Object>) Reflection.getFieldValue(nmsNbtTag, "list");
 
                 if (!internalNbtList.isEmpty()) {
-                    Reflection.setFieldValue(nmsNbtTag, "type",
-                            (byte) NBTType.fromNmsNbtTag(internalNbtList.get(0)).getId());
+                    try {
+                        Reflection.setFieldValue(nmsNbtTag, "type",
+                                (byte) NBTType.fromNmsNbtTag(internalNbtList.get(0)).getId());
+                    } catch (Exception e) {
+                        PluginLogger.info("\n\n\n\nahbjdhgjuqshgjcqsjg" + nmsNbtTag.getClass().toString());
+                    }
                 }
             }
         } catch (NoSuchFieldException | IllegalAccessException e) {
