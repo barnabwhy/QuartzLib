@@ -12,8 +12,8 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <junit.version>4.13.1</junit.version>
         <revision>0.1.2</revision>
     </properties>
@@ -96,7 +96,7 @@
         <dependency>
             <groupId>io.papermc.paper</groupId>
             <artifactId>paper-api</artifactId>
-            <version>1.20.4-R0.1-SNAPSHOT</version>
+            <version>1.20.6-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
 
@@ -166,7 +166,7 @@
             <id>github</id>
             <name>GitHub Packages</name>
             <!-- For public access, use https://maven.zcraft.fr/QuartzLib instead (it's the same repo under the hood). -->
-            <url>https://maven.pkg.github.com/zDevelopers/QuartzLib</url>
+            <url>https://maven.pkg.github.com/barnabwhy/QuartzLib</url>
         </repository>
     </distributionManagement>
 </project>

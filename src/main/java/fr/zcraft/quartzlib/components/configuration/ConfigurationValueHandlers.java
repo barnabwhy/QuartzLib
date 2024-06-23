@@ -54,7 +54,6 @@ import org.bukkit.configuration.MemorySection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BannerMeta;
-//import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
@@ -462,15 +461,8 @@ public abstract class ConfigurationValueHandlers {
 
         int amount = map.containsKey("amount") ? handleIntValue(map.get("amount")) : 1;
 
-        ItemStackBuilder item;
+        ItemStackBuilder item = new ItemStackBuilder(material, amount);
         boolean requiresCraftItem = false;
-
-//        if (material.equals(Material.POTION)) {
-//            Potion potion = handlePotionValue(map);
-//            item = new ItemStackBuilder(potion.toItemStack(amount));
-//        } else {
-//            item = new ItemStackBuilder(material, amount);
-//        }
 
         if (map.containsKey("title")) {
             item.title(map.get("title").toString());
@@ -501,24 +493,6 @@ public abstract class ConfigurationValueHandlers {
         }
 
         return requiresCraftItem ? item.craftItem() : item.item();
-    }
-
-    /**
-     * Tries to parse a potion value. Internal.
-     */
-    @ConfigurationValueHandler
-    @Deprecated
-    public static Potion handlePotionValue(Map map) throws ConfigurationParseException {
-        if (!map.containsKey("effect")) {
-            throw new ConfigurationParseException("Potion effect is required.", map);
-        }
-
-        PotionType type = handleEnumValue(map.get("effect"), PotionType.class);
-        int level = map.containsKey("level") ? handleByteValue(map.get("level")) : 1;
-        boolean splash = map.containsKey("splash") && handleBoolValue(map.get("splash"));
-        boolean extended = map.containsKey("extended") && handleBoolValue(map.get("extended"));
-
-        return new Potion(type, level, splash, extended);
     }
 
     /**
@@ -624,7 +598,7 @@ public abstract class ConfigurationValueHandlers {
         final DyeColor baseColor = getValue(map, "color", DyeColor.BLACK);
         final List<?> patterns = getListValue(map, "patterns", new ArrayList<>(), Object.class);
 
-        banner.setBaseColor(baseColor);
+        //banner.setBaseColor(baseColor);
 
         for (Object rawPattern : patterns) {
             Map<String, Object> mapPattern =

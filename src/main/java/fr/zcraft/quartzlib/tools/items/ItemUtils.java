@@ -210,7 +210,7 @@ public abstract class ItemUtils {
         }
 
         int newDurability = ((Damageable) meta).getDamage();
-        newDurability += newDurability(item.getEnchantmentLevel(Enchantment.DURABILITY)) * factor;
+        newDurability += newDurability(item.getEnchantmentLevel(Enchantment.UNBREAKING)) * factor;
 
         if (newDurability >= item.getType().getMaxDurability()) {
             InventoryUtils.breakItemInHand(player, item);

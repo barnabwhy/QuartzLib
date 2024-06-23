@@ -69,7 +69,7 @@ public final class TextualBanners {
                 getPatterns(DyeColor.BLACK, PatternType.STRIPE_LEFT, PatternType.STRIPE_TOP,
                         PatternType.STRIPE_BOTTOM)));
         chars.put('d', getBannerMeta(DyeColor.BLACK,
-                Arrays.asList(new Pattern(DyeColor.WHITE, PatternType.RHOMBUS_MIDDLE),
+                Arrays.asList(new Pattern(DyeColor.WHITE, PatternType.RHOMBUS),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_BOTTOM),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_LEFT))));
@@ -136,7 +136,7 @@ public final class TextualBanners {
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_RIGHT),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP))));
         chars.put('r', getBannerMeta(DyeColor.BLACK,
-                Arrays.asList(new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR),
+                Arrays.asList(new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_BOTTOM),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNRIGHT),
                         new Pattern(DyeColor.WHITE, PatternType.HALF_VERTICAL),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_LEFT),
@@ -147,7 +147,7 @@ public final class TextualBanners {
                         new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_BOTTOM),
                         new Pattern(DyeColor.BLACK, PatternType.SQUARE_TOP_RIGHT),
                         new Pattern(DyeColor.BLACK, PatternType.SQUARE_BOTTOM_LEFT),
-                        new Pattern(DyeColor.WHITE, PatternType.RHOMBUS_MIDDLE),
+                        new Pattern(DyeColor.WHITE, PatternType.RHOMBUS),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNRIGHT))));
         chars.put('t', getBannerMeta(DyeColor.WHITE,
                 getPatterns(DyeColor.BLACK, PatternType.STRIPE_CENTER, PatternType.STRIPE_TOP)));
@@ -166,14 +166,14 @@ public final class TextualBanners {
                 getPatterns(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT, PatternType.STRIPE_DOWNRIGHT)));
         chars.put('y', getBannerMeta(DyeColor.WHITE,
                 Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNRIGHT),
-                        new Pattern(DyeColor.WHITE, PatternType.HALF_VERTICAL_MIRROR),
+                        new Pattern(DyeColor.WHITE, PatternType.HALF_VERTICAL_RIGHT),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT))));
         chars.put('z', getBannerMeta(DyeColor.WHITE,
                 Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_TOP),
                         new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_BOTTOM),
                         new Pattern(DyeColor.BLACK, PatternType.SQUARE_TOP_LEFT),
                         new Pattern(DyeColor.BLACK, PatternType.SQUARE_BOTTOM_RIGHT),
-                        new Pattern(DyeColor.WHITE, PatternType.RHOMBUS_MIDDLE),
+                        new Pattern(DyeColor.WHITE, PatternType.RHOMBUS),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT))));
 
         chars.put('0', getBannerMeta(DyeColor.WHITE,
@@ -188,7 +188,7 @@ public final class TextualBanners {
                         new Pattern(DyeColor.BLACK, PatternType.TRIANGLE_BOTTOM),
                         new Pattern(DyeColor.BLACK, PatternType.SQUARE_TOP_LEFT),
                         new Pattern(DyeColor.BLACK, PatternType.SQUARE_BOTTOM_RIGHT),
-                        new Pattern(DyeColor.WHITE, PatternType.RHOMBUS_MIDDLE),
+                        new Pattern(DyeColor.WHITE, PatternType.RHOMBUS),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT))));
         chars.put('3', getBannerMeta(DyeColor.WHITE,
                 Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE),
@@ -203,10 +203,10 @@ public final class TextualBanners {
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_RIGHT),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE))));
         chars.put('5', getBannerMeta(DyeColor.BLACK,
-                Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.HALF_VERTICAL_MIRROR),
-                        new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR),
+                Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.HALF_VERTICAL_RIGHT),
+                        new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_BOTTOM),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_BOTTOM),
-                        new Pattern(DyeColor.WHITE, PatternType.DIAGONAL_RIGHT_MIRROR),
+                        new Pattern(DyeColor.WHITE, PatternType.DIAGONAL_UP_RIGHT),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_DOWNRIGHT),
                         new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP))));
         chars.put('6', getBannerMeta(DyeColor.WHITE,
@@ -223,7 +223,7 @@ public final class TextualBanners {
                 getPatterns(DyeColor.BLACK, PatternType.STRIPE_TOP, PatternType.STRIPE_LEFT, PatternType.STRIPE_RIGHT,
                         PatternType.STRIPE_MIDDLE, PatternType.STRIPE_BOTTOM)));
         chars.put('9', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.STRIPE_LEFT),
-                new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_MIRROR),
+                new Pattern(DyeColor.WHITE, PatternType.HALF_HORIZONTAL_BOTTOM),
                 new Pattern(DyeColor.BLACK, PatternType.STRIPE_MIDDLE),
                 new Pattern(DyeColor.BLACK, PatternType.STRIPE_TOP),
                 new Pattern(DyeColor.BLACK, PatternType.STRIPE_RIGHT))));
@@ -252,7 +252,7 @@ public final class TextualBanners {
                 new Pattern(DyeColor.WHITE, PatternType.STRIPE_LEFT),
                 new Pattern(DyeColor.WHITE, PatternType.STRIPE_RIGHT))));
         chars.put(']', getBannerMeta(DyeColor.WHITE, Arrays.asList(new Pattern(DyeColor.BLACK, PatternType.BORDER),
-                new Pattern(DyeColor.BLACK, PatternType.HALF_VERTICAL_MIRROR),
+                new Pattern(DyeColor.BLACK, PatternType.HALF_VERTICAL_RIGHT),
                 new Pattern(DyeColor.WHITE, PatternType.STRIPE_LEFT),
                 new Pattern(DyeColor.WHITE, PatternType.STRIPE_RIGHT))));
         chars.put('/', getBannerMeta(DyeColor.WHITE, getPatterns(DyeColor.BLACK, PatternType.STRIPE_DOWNLEFT)));
@@ -308,7 +308,7 @@ public final class TextualBanners {
      */
     public static BannerMeta getBannerMeta(DyeColor color, List<Pattern> patterns) {
         BannerMeta meta = (BannerMeta) new ItemStack(Material.WHITE_BANNER).getItemMeta();
-        meta.setBaseColor(color);
+        //meta.setBaseColor(color);
         meta.setPatterns(patterns);
         return meta;
     }
@@ -385,7 +385,7 @@ public final class TextualBanners {
             patterns.add(new Pattern(background, PatternType.BORDER));
         }
 
-        return getBanner(meta.getBaseColor().equals(DyeColor.WHITE) ? background : color, patterns);
+        return getBanner(background, patterns);
     }
 
     /**
@@ -459,7 +459,7 @@ public final class TextualBanners {
         }
 
         final BannerMeta meta = (BannerMeta) item.getItemMeta();
-        banner.setBaseColor(meta.getBaseColor());
+        //banner.setBaseColor(meta.getBaseColor());
         banner.setPatterns(meta.getPatterns());
         banner.update();
     }

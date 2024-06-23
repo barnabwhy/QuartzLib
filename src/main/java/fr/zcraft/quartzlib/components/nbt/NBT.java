@@ -152,9 +152,9 @@ public abstract class NBT {
                 case HIDE_PLACED_ON:
                     flags += 1 << 4;
                     break;
-                case HIDE_POTION_EFFECTS:
-                    flags += 1 << 5;
-                    break;
+                //case HIDE_POTION_EFFECTS:
+                //    flags += 1 << 5;
+                //    break;
                 default:
                     break;
             }
