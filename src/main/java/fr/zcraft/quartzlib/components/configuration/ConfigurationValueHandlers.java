@@ -54,7 +54,7 @@ import org.bukkit.configuration.MemorySection;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.BannerMeta;
-import org.bukkit.potion.Potion;
+//import org.bukkit.potion.Potion;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.potion.PotionType;
@@ -465,12 +465,12 @@ public abstract class ConfigurationValueHandlers {
         ItemStackBuilder item;
         boolean requiresCraftItem = false;
 
-        if (material.equals(Material.POTION)) {
-            Potion potion = handlePotionValue(map);
-            item = new ItemStackBuilder(potion.toItemStack(amount));
-        } else {
-            item = new ItemStackBuilder(material, amount);
-        }
+//        if (material.equals(Material.POTION)) {
+//            Potion potion = handlePotionValue(map);
+//            item = new ItemStackBuilder(potion.toItemStack(amount));
+//        } else {
+//            item = new ItemStackBuilder(material, amount);
+//        }
 
         if (map.containsKey("title")) {
             item.title(map.get("title").toString());
