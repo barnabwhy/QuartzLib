@@ -60,7 +60,8 @@ public final class Reflection {
      * @return The Bukkit's version in the package name.
      */
     public static String getBukkitPackageVersion() {
-        return getBukkitPackageName().substring("org.bukkit.craftbukkit.".length());
+        String v = getBukkitPackageName();
+        return v.substring(v.lastIndexOf('.') + 1);
     }
 
     /**
