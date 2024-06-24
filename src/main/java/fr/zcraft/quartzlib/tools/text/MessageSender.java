@@ -42,7 +42,7 @@ import org.bukkit.entity.Player;
 
 
 public final class MessageSender {
-    private static final String nmsVersion = Reflection.getBukkitPackageVersion();
+    private static final String nmsVersion = Bukkit.getMinecraftVersion();
     private static boolean enabled = true;
     private static Class<?> packetPlayOutChatClass;
     private static Class<?> chatSerializerClass;
